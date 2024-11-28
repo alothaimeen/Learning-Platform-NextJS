@@ -59,7 +59,7 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex items-center py-4 justify-between">
         <Input
-          placeholder="Filter courses..."
+          placeholder="Курстарды фильтр жасау"
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
@@ -69,7 +69,7 @@ export function DataTable<TData, TValue>({
         <Link href="/teacher/create">
           <Button>
             <PlusCircle className="h-4 w-4 mr-2" />
-            New course
+            Жаңа курс
           </Button>
         </Link>
       </div>
@@ -130,7 +130,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Артқа
         </Button>
         <Button
           variant="outline"
@@ -138,7 +138,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Алға
         </Button>
       </div>
     </div>
