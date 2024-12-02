@@ -52,7 +52,7 @@ const ChapterIdPage = async ({
       {!chapter.isPublished && (
         <Banner
           variant="warning"
-          label="This chapter is unpublished. It will not be visible in the course"
+          label="Бұл тарау жарияланбаған. Бұл курста көрінбейді"
         />
       )}
       <div className="p-6">
@@ -63,13 +63,13 @@ const ChapterIdPage = async ({
               className="flex items-center text-sm hover:opacity-75 transition mb-6"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to course setup
+              Курсты орнатуға оралу
             </Link>
             <div className="flex items-center justify-between w-full">
               <div className="flex flex-col gap-y-2">
-                <h1 className="text-2xl font-medium">Chapter Creation</h1>
+                <h1 className="text-2xl font-medium">Тарау Құру</h1>
                 <span className="text-sm text-slate-700">
-                  Complete all fields {completionText}
+                 Барлық өрістерді толтырыңыз {completionText}
                 </span>
               </div>
               <ChapterActions
@@ -86,7 +86,7 @@ const ChapterIdPage = async ({
             <div>
               <div className="flex items-center gap-x-2">
                 <IconBadge icon={LayoutDashboard} />
-                <h2 className="text-xl">Customize your chapter</h2>
+                <h2 className="text-xl">Тарауыңызды реттеңіз</h2>
               </div>
               <ChapterTitleForm
                 initialData={chapter}

@@ -23,12 +23,12 @@ export default async function Dashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <InfoCard
           icon={Clock}
-          label="Орындалуда"
+          label="Оқылуда"
           numberOfItems={coursesInProgress.length}
         />
         <InfoCard
           icon={CheckCircle}
-          label="Шешілген"
+          label="Бітірілген"
           numberOfItems={completedCourses.length}
           variant="success"
         />
