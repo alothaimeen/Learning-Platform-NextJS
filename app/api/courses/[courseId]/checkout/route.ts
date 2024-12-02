@@ -32,7 +32,7 @@ export async function POST(
       },
     });
 
-    if (purchase) {
+    if (true) {
       return new NextResponse("Already purchased", { status: 400 });
     }
 
