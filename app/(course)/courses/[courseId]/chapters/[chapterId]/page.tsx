@@ -11,6 +11,21 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
 
+const questionsDictionary = [
+  {
+    question: "What is the main takeaway from this chapter?",
+    options: ["Key concept 1", "Key concept 2", "Key concept 3"],
+  },
+  {
+    question: "How can you apply this knowledge to real-life scenarios?",
+    options: ["Scenario 1", "Scenario 2", "Scenario 3"],
+  },
+  {
+    question: "What additional resources might help deepen your understanding?",
+    options: ["Resource 1", "Resource 2", "Resource 3"],
+  },
+];
+
 const ChapterIdPage = async ({
   params,
 }: {
@@ -105,6 +120,25 @@ const ChapterIdPage = async ({
               </div>
             </>
           )}
+          {/* Questions List */}
+          <Separator />
+          <div className="p-4">
+            <h3 className="text-xl font-semibold mb-4">Questions to Consider</h3>
+            <ul className="list-disc list-inside">
+              {questionsDictionary.map((item, index) => (
+                <li key={index} className="mb-4">
+                  <p className="font-medium">{item.question}</p>
+                  <ul className="list-disc list-inside ml-4">
+                    {item.options.map((option, idx) => (
+                      <li key={idx} className="mb-2">
+                        {option}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
