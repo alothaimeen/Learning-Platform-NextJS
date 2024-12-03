@@ -10,6 +10,7 @@ import { Preview } from "@/components/preview";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const questionsDictionary = [
   {
@@ -120,24 +121,33 @@ const ChapterIdPage = async ({
               </div>
             </>
           )}
-          {/* Questions List */}
+          {/* Questions with Radiobuttons */}
           <Separator />
           <div className="p-4">
             <h3 className="text-xl font-semibold mb-4">Questions to Consider</h3>
-            <ul className="list-disc list-inside">
+            <div className="space-y-6">
               {questionsDictionary.map((item, index) => (
-                <li key={index} className="mb-4">
+                <div key={index} className="space-y-3">
                   <p className="font-medium">{item.question}</p>
-                  <ul className="list-disc list-inside ml-4">
+                  <RadioGroup>
                     {item.options.map((option, idx) => (
-                      <li key={idx} className="mb-2">
-                        {option}
-                      </li>
+                      <div
+                        key={idx}
+                        className="flex items-center space-x-2"
+                      >
+                        <RadioGroupItem id={`${index}-${idx}`} value={option} />
+                        <label
+                          htmlFor={`${index}-${idx}`}
+                          className="text-sm text-gray-700"
+                        >
+                          {option}
+                        </label>
+                      </div>
                     ))}
-                  </ul>
-                </li>
+                  </RadioGroup>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>
