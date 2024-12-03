@@ -1,4 +1,4 @@
-"use client"
+import { RadioGroup, RadioGroupItem } from "@radix-ui/react-radio-group";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { File } from "lucide-react";
@@ -12,63 +12,18 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
 
-
-import * as React from "react"
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
-import { Circle } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-
-const RadioGroup = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
->(({ className, ...props }, ref) => {
-  return (
-    <RadioGroupPrimitive.Root
-      className={cn("grid gap-2", className)}
-      {...props}
-      ref={ref}
-    />
-  )
-})
-RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
-
-const RadioGroupItem = React.forwardRef<
-  React.ElementRef<typeof RadioGroupPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
->(({ className, ...props }, ref) => {
-  return (
-    <RadioGroupPrimitive.Item
-      ref={ref}
-      className={cn(
-        "aspect-square h-4 w-4 rounded-full border border-primary text-primary ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
-      {...props}
-    >
-      <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-        <Circle className="h-2.5 w-2.5 fill-current text-current" />
-      </RadioGroupPrimitive.Indicator>
-    </RadioGroupPrimitive.Item>
-  )
-})
-RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
-
-export { RadioGroup, RadioGroupItem }
-
-
-const questionsDictionary = [
+const questions = [
   {
-    question: "What is the main takeaway from this chapter?",
-    options: ["Key concept 1", "Key concept 2", "Key concept 3"],
+    id: 1,
+    question: "What is your preferred learning style?",
+    options: ["Visual", "Auditory", "Kinesthetic", "Reading/Writing"],
+    correctAnswer: "Visual", // Correct answer for this question
   },
   {
-    question: "How can you apply this knowledge to real-life scenarios?",
-    options: ["Scenario 1", "Scenario 2", "Scenario 3"],
-  },
-  {
-    question: "What additional resources might help deepen your understanding?",
-    options: ["Resource 1", "Resource 2", "Resource 3"],
+    id: 2,
+    question: "How much time can you dedicate to learning each day?",
+    options: ["1 hour", "2-3 hours", "4-5 hours", "More than 5 hours"],
+    correctAnswer: "2-3 hours", // Correct answer for this question
   },
 ];
 
@@ -103,6 +58,28 @@ const ChapterIdPage = async ({
 
   const isLocked = !chapter.isFree && !purchase;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
+
+  // Track selected answers
+  const [selectedAnswers, setSelectedAnswers] = React.useState<
+    Record<number, string>
+  >({});
+
+  const handleAnswerChange = (questionId: number, value: string) => {
+    setSelectedAnswers((prev) => ({
+      ...prev,
+      [questionId]: value,
+    }));
+  };
+
+  const checkAnswers = () => {
+    let correctCount = 0;
+    questions.forEach((q) => {
+      if (selectedAnswers[q.id] === q.correctAnswer) {
+        correctCount += 1;
+      }
+    });
+    return correctCount;
+  };
 
   return (
     <div>
@@ -148,6 +125,46 @@ const ChapterIdPage = async ({
           <div>
             <Preview value={chapter.description!} />
           </div>
+          <Separator />
+          <div className="p-4">
+            {questions.map((q) => (
+              <div key={q.id} className="mb-6">
+                <p className="text-lg font-medium mb-4">{q.question}</p>
+                <RadioGroup
+                  className="space-y-2"
+                  value={selectedAnswers[q.id]}
+                  onValueChange={(value) => handleAnswerChange(q.id, value)}
+                >
+                  {q.options.map((option, idx) => (
+                    <div key={idx} className="flex items-center space-x-2">
+                      <RadioGroupItem
+                        id={`question-${q.id}-option-${idx}`}
+                        value={option}
+                        className="w-4 h-4 rounded-full border border-gray-300 focus:ring focus:ring-offset-2 focus:ring-blue-500"
+                      />
+                      <label
+                        htmlFor={`question-${q.id}-option-${idx}`}
+                        className="text-gray-700"
+                      >
+                        {option}
+                      </label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              </div>
+            ))}
+            <div className="mt-4">
+              <button
+                onClick={() => {
+                  const correctCount = checkAnswers();
+                  alert(`You got ${correctCount} out of ${questions.length} correct!`);
+                }}
+                className="px-4 py-2 bg-blue-500 text-white rounded-md"
+              >
+                Check Answers
+              </button>
+            </div>
+          </div>
           {!!attachments.length && (
             <>
               <Separator />
@@ -166,34 +183,6 @@ const ChapterIdPage = async ({
               </div>
             </>
           )}
-          {/* Questions with Radiobuttons */}
-          <Separator />
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-4">Questions to Consider</h3>
-            <div className="space-y-6">
-              {questionsDictionary.map((item, index) => (
-                <div key={index} className="space-y-3">
-                  <p className="font-medium">{item.question}</p>
-                  <RadioGroup>
-                    {item.options.map((option, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center space-x-2"
-                      >
-                        <RadioGroupItem id={`${index}-${idx}`} value={option} />
-                        <label
-                          htmlFor={`${index}-${idx}`}
-                          className="text-sm text-gray-700"
-                        >
-                          {option}
-                        </label>
-                      </div>
-                    ))}
-                  </RadioGroup>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>
