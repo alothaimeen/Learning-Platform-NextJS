@@ -2,6 +2,7 @@
 
 import { Survey, Model } from 'survey-react-ui';
 import 'survey-core/defaultV2.min.css';
+import { LayeredDarkPanelless } from "survey-core/themes";
 
 const surveyJson = {
     title: "American History",
@@ -46,14 +47,14 @@ const surveyJson = {
 
 const SurveyComponent = () => {
   const survey = new Model(surveyJson);
-
+  survey.applyTheme(LayeredDarkPanelless);
   survey.onComplete.add((sender) => {
     console.log("Survey results: ", sender.data);
   });
 
   return (
     <div>
-      <h1>Survey</h1>
+      <h1>Сұрақтар</h1>
       <Survey model={survey} />
     </div>
   );
