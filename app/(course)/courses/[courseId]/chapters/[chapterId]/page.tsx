@@ -10,6 +10,7 @@ import { Preview } from "@/components/preview";
 import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
+import Quiz from 'react-quiz-component';
 
 const ChapterIdPage = async ({
   params,
