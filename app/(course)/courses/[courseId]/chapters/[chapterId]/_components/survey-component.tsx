@@ -8,8 +8,8 @@ const surveyJson1 = {
   title: "LEGO Education SPIKE танысу",
   showProgressBar: "bottom",
   showTimer: true,
-  timeLimitPerPage: 10,
-  timeLimit: 25,
+  timeLimitPerPage: 60,
+  timeLimit: 180,
   firstPageIsStarted: true,
   startSurveyText: "Start Quiz",
   pages: [{
@@ -72,8 +72,8 @@ const surveyJson2 = {
   title: "LEGO Education SPIKE бағдарламасы орнату ",
   showProgressBar: "bottom",
   showTimer: true,
-  timeLimitPerPage: 10,
-  timeLimit: 25,
+  timeLimitPerPage: 60,
+  timeLimit: 120,
   firstPageIsStarted: true,
   startSurveyText: "Start Quiz",
   pages: [{
