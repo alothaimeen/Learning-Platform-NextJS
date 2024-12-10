@@ -44,6 +44,17 @@ const ChapterIdPage = async ({
   const isLocked = !chapter.isFree && !purchase;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
+
+  // determining test 
+  let testId = 'first';
+
+  if (chapter.id === "7dedc047-3e7d-4bb4-a454-c727ab38df60") {
+    testId = 'first';
+  }
+  else if(chapter.id === "ed4b01f1-cadb-43ed-9a3e-1ce2fb7b674b") {
+    testId = 'second';
+  }
+
   return (
     <div>
       {userProgress?.isCompleted && (
@@ -106,7 +117,7 @@ const ChapterIdPage = async ({
               </div>
             </>
           )}
-          <SurveyComponent/>
+          <SurveyComponent id={testId}/>
         </div>
       </div>
     </div>

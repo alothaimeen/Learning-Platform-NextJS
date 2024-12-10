@@ -4,57 +4,69 @@ import { Survey, Model } from 'survey-react-ui';
 import 'survey-core/defaultV2.min.css';
 import { LayeredDarkPanelless } from "survey-core/themes";
 
-const surveyJson = {
-    title: "American History",
-    pages: [{
-      elements: [{
-        type: "radiogroup",
-        name: "civilwar",
-        title: "When was the American Civil War?",
-        choices: [
-          "1796-1803", "1810-1814", "1861-1865", "1939-1945"
+const surveyData: Record<string, { title: string; pages: any[] }> = {
+  first: {
+    title: "1 сабақ LEGO Education SPIKE танысу ",
+    pages: [
+      {
+        elements: [
+          {
+            name: "firstq",
+            title: "Lego Education Spike жинағы неше бөліктен тұрады?",
+            correctAnswer: "екі",
+            type: "text"
+          },
+          {
+            name: "secondq",
+            title: "Бұл жинақта неше қандай моторлар болады?",
+            correctAnswer: "Үлкен және ортаңғы моторлар",
+            type: "text"
+          },
+          {
+            name: "thirdq",
+            title: "Жинақтың толық атауы?",
+            correctAnswer: "lego education spike",
+            type: "text"
+          },
         ],
-        correctAnswer: "1861-1865"
-      }]
-    }, {
-      elements: [{
-        type: "radiogroup",
-        name: "libertyordeath",
-        title: "Whose quote is this: \"Give me liberty, or give me death\"?",
-        choicesOrder: "random",
-        choices: [
-          "John Hancock", "James Madison", "Patrick Henry", "Samuel Adams"
+      },
+    ],
+  },
+  second: {
+    title: "World Geography",
+    pages: [
+      {
+        elements: [
+          {
+            type: "radiogroup",
+            name: "largestcontinent",
+            title: "Which is the largest continent?",
+            choices: ["Africa", "Asia", "Europe", "Antarctica"],
+            correctAnswer: "Asia",
+          },
         ],
-        correctAnswer: "Patrick Henry"
-      }]
-    }, {
-      elements: [{
-        type: "radiogroup",
-        name: "magnacarta",
-        title: "What is Magna Carta?",
-        choicesOrder: "random",
-        choices: [
-          "The foundation of the British parliamentary system",
-          "The Great Seal of the monarchs of England",
-          "The French Declaration of the Rights of Man",
-          "The charter signed by the Pilgrims on the Mayflower"
-        ],
-        correctAnswer: "The foundation of the British parliamentary system"
-      }]
-    }]
-  };
-  
+      },
+    ],
+  },
+};
 
-const SurveyComponent = () => {
+const SurveyComponent = ({ id }: { id: string }) => {
+  const surveyJson = surveyData[id];
+
+  if (!surveyJson) {
+    return <h1>Survey not found for ID: {id}</h1>;
+  }
+
   const survey = new Model(surveyJson);
   survey.applyTheme(LayeredDarkPanelless);
+
   survey.onComplete.add((sender) => {
-    console.log("Survey results: ", sender.data);
+    console.log(`Survey results for ID ${id}:`, sender.data);
   });
 
   return (
-    <div>
-      <h1>Сұрақтар</h1>
+    <div style={{ padding: "20px", backgroundColor: "#1f1f1f", color: "#fff" }}>
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>{surveyJson.title}</h1>
       <Survey model={survey} />
     </div>
   );
