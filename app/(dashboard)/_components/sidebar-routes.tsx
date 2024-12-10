@@ -48,6 +48,7 @@ export const SidebarRoutes = () => {
           href={route.href}
         />
       ))}
+      <a href="https://wa.me/+7(702)673-98-69" ><i></i> <span>+7(702)673-98-69</span></a>
     </div>
   );
 };

@@ -11,8 +11,6 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
 import SurveyComponent from "./_components/survey-component";
-import { CollaborativeApp } from "@/app/CollaborativeApp";
-import { Room } from "@/app/Room";
 
 const ChapterIdPage = async ({
   params,
@@ -120,9 +118,7 @@ const ChapterIdPage = async ({
             </>
           )}
           <SurveyComponent id={testId}/>
-          <Room>
-            <CollaborativeApp />
-          </Room>
+          //paste chapter comments there
         </div>
       </div>
     </div>
