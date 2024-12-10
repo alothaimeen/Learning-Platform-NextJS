@@ -5,7 +5,7 @@ import 'survey-core/defaultV2.min.css';
 import { LayeredDarkPanelless } from "survey-core/themes";
 
 const surveyJson1 = {
-  title: "American History",
+  title: "LEGO Education SPIKE танысу",
   showProgressBar: "bottom",
   showTimer: true,
   timeLimitPerPage: 10,
@@ -15,7 +15,7 @@ const surveyJson1 = {
   pages: [{
     elements: [{
       type: "html",
-      html: "You are about to start a quiz on American history. <br>You will have 10 seconds for every question and 25 seconds to end the quiz.<br>Enter your name below and click <b>Start Quiz</b> to begin."
+      html: "Төмендегі өріске өз атыңызды жазыңыз"
     }, {
       type: "text",
       name: "username",
@@ -25,40 +25,40 @@ const surveyJson1 = {
   }, {
     elements: [{
       type: "radiogroup",
-      name: "civilwar",
-      title: "When was the American Civil War?",
+      name: "firstq",
+      title: "Lego Education Spike жинағы неше бөліктен тұрады?",
       choices: [
-        "1796-1803", "1810-1814", "1861-1865", "1939-1945"
+        "екі", "үш", "төрт", "бес"
       ],
-      correctAnswer: "1861-1865"
+      correctAnswer: "екі"
     }]
   }, {
     elements: [{
       type: "radiogroup",
-      name: "libertyordeath",
-      title: "Whose quote is this: \"Give me liberty, or give me death\"?",
+      name: "secondq",
+      title: "Бұл жинақта неше қандай моторлар болады?",
       choicesOrder: "random",
       choices: [
-        "John Hancock", "James Madison", "Patrick Henry", "Samuel Adams"
+        "Кіші және ортаңғы моторлар", "Үлкен және ортаңғы моторлар", "Кіші және үлкен моторлар", "Екі үлкен мотор"
       ],
-      correctAnswer: "Patrick Henry"
+      correctAnswer: "Үлкен және ортаңғы моторлар"
     }]
   }, {
     elements: [{
       type: "radiogroup",
-      name: "magnacarta",
-      title: "What is Magna Carta?",
+      name: "thirdq",
+      title: "Жинақтың толық атауы?",
       choicesOrder: "random",
       choices: [
-        "The foundation of the British parliamentary system",
-        "The Great Seal of the monarchs of England",
-        "The French Declaration of the Rights of Man",
-        "The charter signed by the Pilgrims on the Mayflower"
+        "lego education ev3",
+        "lego arduino uno",
+        "lego arduino nano",
+        "lego education spike"
       ],
-      correctAnswer: "The foundation of the British parliamentary system"
+      correctAnswer: "lego education spike"
     }]
   }],
-  completedHtml: "<h4>Сіз <b>{questionCount}</b> сұрақтардан <b>{correctAnswers}</b> жауап дұрыс бердіңіз.</h4>",
+  completedHtml: "<h4>Сіз <b>{questionCount}</b> сұрақтардан <b>{correctAnswers}</b> дұрыс жауап бердіңіз.</h4>",
   completedHtmlOnCondition: [{
     expression: "{correctAnswers} == 0",
     html: "<h4>Өкінішке орай барлық жауаптар дұрыс емес.</h4>"
@@ -68,12 +68,68 @@ const surveyJson1 = {
   }]
 };
 
+const surveyJson2 = {
+  title: "LEGO Education SPIKE бағдарламасы орнату ",
+  showProgressBar: "bottom",
+  showTimer: true,
+  timeLimitPerPage: 10,
+  timeLimit: 25,
+  firstPageIsStarted: true,
+  startSurveyText: "Start Quiz",
+  pages: [{
+    elements: [{
+      type: "html",
+      html: "Төмендегі өріске өз атыңызды жазыңыз"
+    }, {
+      type: "text",
+      name: "username",
+      titleLocation: "hidden",
+      isRequired: true
+    }]
+  }, {
+    elements: [{
+      type: "radiogroup",
+      name: "firstq",
+      title: "Бағдарламаны қалай жүктейміз?",
+      choices: [
+        "Google drive", "Github", "Лего Ресми сайтынан", "Yandex disk"
+      ],
+      correctAnswer: "Лего Ресми сайтынан"
+    }]
+  },  
+  {
+    elements: [{
+      type: "radiogroup",
+      name: "secondq",
+      title: "Бағдарламаның тілін қалай ауыстрамыз?",
+      choicesOrder: "random",
+      choices: [
+        "Түзетулер Тіл",
+        "Түзетулер Фон",
+        "Түзетулер Өзгерту",
+        "Түзетулер Компиляция"
+      ],
+      correctAnswer: "Түзетулер Тіл"
+    }]
+  }],
+  completedHtml: "<h4>Сіз <b>{questionCount}</b> сұрақтардан <b>{correctAnswers}</b> дұрыс жауап бердіңіз.</h4>",
+  completedHtmlOnCondition: [{
+    expression: "{correctAnswers} == 0",
+    html: "<h4>Өкінішке орай барлық жауаптар дұрыс емес.</h4>"
+  }, {
+    expression: "{correctAnswers} == {questionCount}",
+    html: "<h4>Сіз барлық сұрақтарға дұрыс жауап</h4>"
+  }]
+};
 
 const SurveyComponent = ({ id }: { id: string }) => {
 
   let surveyJson;
   if (id === "first") {
     surveyJson = surveyJson1;
+  }
+  else if(id === "second") {
+    surveyJson = surveyJson2;
   }
 
   if (!surveyJson) {
