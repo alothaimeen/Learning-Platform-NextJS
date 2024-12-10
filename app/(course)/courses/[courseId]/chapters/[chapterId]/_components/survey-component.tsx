@@ -29,6 +29,14 @@ const surveyData: Record<string, { title: string; pages: any[] }> = {
             type: "text"
           },
         ],
+        completedHtml: "<h4>Сіз <b>{correctAnswers}</b> <b>{questionCount}</b> сұрақтан дұрыс жауап бердіңіз.</h4>",
+        completedHtmlOnCondition: [{
+        expression: "{correctAnswers} == 0",
+        html: "<h4>Өкінішке орай барлық жауаптарыңыз дұрыс емес шықты</h4>"
+      }, {
+        expression: "{correctAnswers} == {questionCount}",
+        html: "<h4>Сіз барлық сұрақтарға дұрыс жауап бердіңіз</h4>"
+      }]
       },
     ],
   },
@@ -45,6 +53,14 @@ const surveyData: Record<string, { title: string; pages: any[] }> = {
             correctAnswer: "Asia",
           },
         ],
+        completedHtml: "<h4>Сіз <b>{correctAnswers}</b> <b>{questionCount}</b> сұрақтан дұрыс жауап бердіңіз.</h4>",
+        completedHtmlOnCondition: [{
+        expression: "{correctAnswers} == 0",
+        html: "<h4>Өкінішке орай барлық жауаптарыңыз дұрыс емес шықты</h4>"
+      }, {
+        expression: "{correctAnswers} == {questionCount}",
+        html: "<h4>Сіз барлық сұрақтарға дұрыс жауап бердіңіз</h4>"
+      }]
       },
     ],
   },
