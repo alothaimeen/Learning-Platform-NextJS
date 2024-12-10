@@ -5,23 +5,32 @@ import 'survey-core/defaultV2.min.css';
 import { LayeredDarkPanelless } from "survey-core/themes";
 
 const surveyJson1 = {
-  title: "1 сабақ LEGO Education SPIKE танысу",
+  title: "American History",
   showProgressBar: "bottom",
   showTimer: true,
   timeLimitPerPage: 10,
   timeLimit: 25,
   firstPageIsStarted: true,
   startSurveyText: "Start Quiz",
-  pages: [
-  {
+  pages: [{
+    elements: [{
+      type: "html",
+      html: "You are about to start a quiz on American history. <br>You will have 10 seconds for every question and 25 seconds to end the quiz.<br>Enter your name below and click <b>Start Quiz</b> to begin."
+    }, {
+      type: "text",
+      name: "username",
+      titleLocation: "hidden",
+      isRequired: true
+    }]
+  }, {
     elements: [{
       type: "radiogroup",
-      name: "firstq",
-      title: "Lego Education Spike жинағы неше бөліктен тұрады?",
+      name: "civilwar",
+      title: "When was the American Civil War?",
       choices: [
-        "үш", "екі", "төрт", "бес"
+        "1796-1803", "1810-1814", "1861-1865", "1939-1945"
       ],
-      correctAnswer: "екі"
+      correctAnswer: "1861-1865"
     }]
   }, {
     elements: [{
@@ -55,7 +64,7 @@ const surveyJson1 = {
     html: "<h4>Өкінішке орай барлық жауаптар дұрыс емес.</h4>"
   }, {
     expression: "{correctAnswers} == {questionCount}",
-    html: "<h4>Сіз барлық сұрақтарға дұрыс жауап бердіңіз</h4>"
+    html: "<h4>Сіз барлық сұрақтарға дұрыс жауап</h4>"
   }]
 };
 
