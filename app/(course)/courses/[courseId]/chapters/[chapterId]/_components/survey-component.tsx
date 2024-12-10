@@ -13,20 +13,23 @@ const surveyData: Record<string, { title: string; pages: any[] }> = {
           {
             name: "firstq",
             title: "Lego Education Spike жинағы неше бөліктен тұрады?",
+            choices: ["екі", "Asia", "Europe", "Antarctica"],
             correctAnswer: "екі",
-            type: "text"
+            type: "radiogroup"
           },
           {
             name: "secondq",
             title: "Бұл жинақта неше қандай моторлар болады?",
+            choices: ["Үлкен және ортаңғы моторлар", "Asia", "Europe", "Antarctica"],
             correctAnswer: "Үлкен және ортаңғы моторлар",
-            type: "text"
+            type: "radiogroup"
           },
           {
             name: "thirdq",
             title: "Жинақтың толық атауы?",
+            choices: ["lego education spike", "Asia", "Europe", "Antarctica"],
             correctAnswer: "lego education spike",
-            type: "text"
+            type: "radiogroup"
           },
         ],
         completedHtml: "<h4>Сіз <b>{correctAnswers}</b> <b>{questionCount}</b> сұрақтан дұрыс жауап бердіңіз.</h4>",
