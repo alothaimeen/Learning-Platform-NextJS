@@ -58,13 +58,13 @@ const surveyJson1 = {
       correctAnswer: "The foundation of the British parliamentary system"
     }]
   }],
-  completedHtml: "<h4>You got <b>{correctAnswers}</b> out of <b>{questionCount}</b> correct answers.</h4>",
+  completedHtml: "<h4>Сіз <b>{questionCount}</b> сұрақтардан <b>{correctAnswers}</b> жауап дұрыс бердіңіз.</h4>",
   completedHtmlOnCondition: [{
     expression: "{correctAnswers} == 0",
-    html: "<h4>Unfortunately, none of your answers are correct. Please try again.</h4>"
+    html: "<h4>Өкінішке орай барлық жауаптар дұрыс емес.</h4>"
   }, {
     expression: "{correctAnswers} == {questionCount}",
-    html: "<h4>Congratulations! You answered all the questions correctly!</h4>"
+    html: "<h4>Сіз барлық сұрақтарға дұрыс жауап бердіңіз</h4>"
   }]
 };
 
