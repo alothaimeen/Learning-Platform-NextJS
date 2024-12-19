@@ -57,11 +57,11 @@ const ChapterIdPage = async ({
     testId = 'second';
   }
 
-  const disqusShortname = "your-disqus-shortname";
+  const disqusShortname = "ddddd";
   const disqusConfig = {
-    url: `https://your-site.com/courses/${params.courseId}/chapters/${params.chapterId}`,
-    identifier: params.chapterId,
-    title: chapter.title,
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/courses/${params.courseId}/chapters/${params.chapterId}`, // Use your app's base URL
+    identifier: params.chapterId, // Unique identifier for the chapter
+    title: chapter.title, // Chapter title
   };
 
   return (
