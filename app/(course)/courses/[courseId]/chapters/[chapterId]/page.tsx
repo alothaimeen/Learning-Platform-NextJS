@@ -127,10 +127,7 @@ const ChapterIdPage = async ({
           <SurveyComponent id={testId} />
           <Separator />
           {/* Disqus Comment Section */}
-          <div className="p-4">
-            <h3 className="text-xl font-semibold mb-4">Comments</h3>
-            <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-          </div>
+          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
         </div>
       </div>
     </div>
