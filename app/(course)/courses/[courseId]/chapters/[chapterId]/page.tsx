@@ -11,6 +11,7 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
 import SurveyComponent from "./_components/survey-component";
+import { DiscussionEmbed } from 'disqus-react';
 
 const ChapterIdPage = async ({
   params,
@@ -118,6 +119,8 @@ const ChapterIdPage = async ({
             </>
           )}
           <SurveyComponent id={testId}/>
+          //paste spile iframe here
+          <iframe src="https://spike.legoeducation.com/" width="600" height="400"></iframe>
           //paste chapter comments there
         </div>
       </div>
