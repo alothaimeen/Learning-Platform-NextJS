@@ -60,7 +60,7 @@ const ChapterIdPage = async ({
   }
 
   // Disqus configuration
-  const disqusShortname = "your-disqus-shortname"; // Replace with your Disqus shortname
+  const disqusShortname = "ddddd"; // Replace with your Disqus shortname
   const disqusConfig = {
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/courses/${params.courseId}/chapters/${params.chapterId}`, // Use your app's base URL
     identifier: params.chapterId, // Unique identifier for the chapter
