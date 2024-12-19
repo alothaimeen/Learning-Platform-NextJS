@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { File } from "lucide-react";
@@ -12,11 +11,8 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
 import SurveyComponent from "./_components/survey-component";
-const DisqusEmbed = dynamic(
-  () =>
-    import("disqus-react").then((mod) => mod.DiscussionEmbed),
-  { ssr: false }
-);
+import { DiscussionEmbed } from 'disqus-react';
+import DisqusComments from "./_components/discuq-comments";
 
 const ChapterIdPage = async ({
   params,
@@ -50,21 +46,22 @@ const ChapterIdPage = async ({
   const isLocked = !chapter.isFree && !purchase;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
-  // determining test
-  let testId = "first";
+
+  // determining test 
+  let testId = 'first';
 
   if (chapter.id === "7dedc047-3e7d-4bb4-a454-c727ab38df60") {
-    testId = "first";
-  } else if (chapter.id === "ed4b01f1-cadb-43ed-9a3e-1ce2fb7b674b") {
-    testId = "second";
+    testId = 'first';
+  }
+  else if(chapter.id === "ed4b01f1-cadb-43ed-9a3e-1ce2fb7b674b") {
+    testId = 'second';
   }
 
-  // Disqus configuration
-  const disqusShortname = "ddddd"; // Replace with your Disqus shortname
+  const disqusShortname = "your-disqus-shortname";
   const disqusConfig = {
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/courses/${params.courseId}/chapters/${params.chapterId}`, // Use your app's base URL
-    identifier: params.chapterId, // Unique identifier for the chapter
-    title: chapter.title, // Chapter title
+    url: `https://your-site.com/courses/${params.courseId}/chapters/${params.chapterId}`,
+    identifier: params.chapterId,
+    title: chapter.title,
   };
 
   return (
@@ -129,10 +126,8 @@ const ChapterIdPage = async ({
               </div>
             </>
           )}
-          <SurveyComponent id={testId} />
-          <Separator />
-          {/* Disqus Comment Section */}
-          <DisqusEmbed shortname={disqusShortname} config={disqusConfig} />
+          <SurveyComponent id={testId}/>
+          <DisqusComments shortname={disqusShortname} config={disqusConfig} />
         </div>
       </div>
     </div>
