@@ -11,6 +11,7 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
 import SurveyComponent from "./_components/survey-component";
+import { DiscussionEmbed } from "disqus-react";
 
 const ChapterIdPage = async ({
   params,
@@ -44,16 +45,22 @@ const ChapterIdPage = async ({
   const isLocked = !chapter.isFree && !purchase;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
 
-
-  // determining test 
-  let testId = 'first';
+  // determining test
+  let testId = "first";
 
   if (chapter.id === "7dedc047-3e7d-4bb4-a454-c727ab38df60") {
-    testId = 'first';
+    testId = "first";
+  } else if (chapter.id === "ed4b01f1-cadb-43ed-9a3e-1ce2fb7b674b") {
+    testId = "second";
   }
-  else if(chapter.id === "ed4b01f1-cadb-43ed-9a3e-1ce2fb7b674b") {
-    testId = 'second';
-  }
+
+  // Disqus configuration
+  const disqusShortname = "your-disqus-shortname"; // Replace with your Disqus shortname
+  const disqusConfig = {
+    url: `${process.env.NEXT_PUBLIC_SITE_URL}/courses/${params.courseId}/chapters/${params.chapterId}`, // Use your app's base URL
+    identifier: params.chapterId, // Unique identifier for the chapter
+    title: chapter.title, // Chapter title
+  };
 
   return (
     <div>
@@ -117,8 +124,13 @@ const ChapterIdPage = async ({
               </div>
             </>
           )}
-          <SurveyComponent id={testId}/>
-          <iframe src="https://spike.legoeducation.com/" width="600" height="400"></iframe>
+          <SurveyComponent id={testId} />
+          <Separator />
+          {/* Disqus Comment Section */}
+          <div className="p-4">
+            <h3 className="text-xl font-semibold mb-4">Comments</h3>
+            <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+          </div>
         </div>
       </div>
     </div>
