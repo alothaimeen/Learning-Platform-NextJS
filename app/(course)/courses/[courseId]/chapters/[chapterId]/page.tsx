@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { File } from "lucide-react";
@@ -11,7 +12,11 @@ import { CourseEnrollButton } from "./_components/course-enroll-button";
 import { CourseProgressButton } from "./_components/course-progress-button";
 import { VideoPlayer } from "./_components/video-player";
 import SurveyComponent from "./_components/survey-component";
-import { DiscussionEmbed } from "disqus-react";
+const DisqusEmbed = dynamic(
+  () =>
+    import("disqus-react").then((mod) => mod.DiscussionEmbed),
+  { ssr: false }
+);
 
 const ChapterIdPage = async ({
   params,
@@ -127,7 +132,7 @@ const ChapterIdPage = async ({
           <SurveyComponent id={testId} />
           <Separator />
           {/* Disqus Comment Section */}
-          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+          <DisqusEmbed shortname={disqusShortname} config={disqusConfig} />
         </div>
       </div>
     </div>
