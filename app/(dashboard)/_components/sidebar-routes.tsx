@@ -56,7 +56,7 @@ export const SidebarRoutes = () => {
         <Phone className="w-4 h-4" />
         <span>+7 (702) 673-98-69</span>
       </a>
-      <div className="mt-6 space-y-2">
+      <div className="mt-6 space-y-2 px-4">
         <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
           Пайдаланушы келісімі
         </span>
