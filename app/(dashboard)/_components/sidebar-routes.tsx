@@ -14,7 +14,7 @@ const guestRoutes = [
   },
   {
     icon: Compass,
-    label: "Қарау",
+    label: "Курстар",
     href: "/search",
   },
 ];
@@ -58,16 +58,16 @@ export const SidebarRoutes = () => {
       </a>
       <div className="mt-6 space-y-2">
         <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
-          Пользовательское соглашение
+          Пайдаланушы келісімі
         </span>
         <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
-          Полезные ссылки
+          Пайдалы сілтемелер
         </span>
         <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
-          Политика конфиденциальности
+          Құпиялылық саясаты
         </span>
         <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
-          FAQ (Часто задаваемые вопросы)
+          FAQ (Жиі қойылатын сұрақтар)
         </span>
       </div>
     </div>
