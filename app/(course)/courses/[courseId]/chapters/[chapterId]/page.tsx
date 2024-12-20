@@ -57,7 +57,7 @@ const ChapterIdPage = async ({
     testId = 'second';
   }
 
-  const disqusShortname = "ddddd";
+  const disqusShortname = "ddddd-8";
   const disqusConfig = {
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/courses/${params.courseId}/chapters/${params.chapterId}`, // Use your app's base URL
     identifier: params.chapterId, // Unique identifier for the chapter
