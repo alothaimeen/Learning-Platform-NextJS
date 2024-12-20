@@ -1,9 +1,10 @@
 "use client";
 
-import { BarChart, Compass, Layout, List } from "lucide-react";
+import { BarChart, Compass, Layout, List, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { SidebarItem } from "./sidebar-item";
+
 
 const guestRoutes = [
   {
@@ -48,7 +49,13 @@ export const SidebarRoutes = () => {
           href={route.href}
         />
       ))}
-      <a href="https://wa.me/+7(702)673-98-69" ><i></i> <span>+7(702)673-98-69</span></a>
+      <a
+        href="https://wa.me/+77026739869"
+        className="flex items-center justify-center space-x-2 p-2 text-sm font-medium text-primary hover:text-primary-dark bg-primary/10 rounded-lg hover:bg-primary/20 transition"
+      >
+        <Phone className="w-4 h-4" />
+        <span>+7 (702) 673-98-69</span>
+      </a>
     </div>
   );
 };
