@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { CheckCircle, Clock } from "lucide-react";
+import Image from "next/image";
 
 import { getDashboardCourses } from "@/actions/get-dashboard-courses";
 import { CoursesList } from "@/components/courses-list";
@@ -33,6 +34,7 @@ export default async function Dashboard() {
           variant="success"
         />
       </div>
+      <Image height={"1080"} width={1920} alt="logo" src="/robo_banner.png" />;
       <CoursesList items={[...coursesInProgress, ...completedCourses]} />
     </div>
   );
