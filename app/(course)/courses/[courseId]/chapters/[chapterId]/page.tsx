@@ -62,18 +62,18 @@ const ChapterIdPage = async ({
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/courses/${params.courseId}/chapters/${params.chapterId}`, // Use your app's base URL
     identifier: params.chapterId, // Unique identifier for the chapter
     title: chapter.title, // Chapter title
-    language: "ru"
+    language: "kk"
   };
 
   return (
     <div>
       {userProgress?.isCompleted && (
-        <Banner variant="success" label="You already completed this chapter." />
+        <Banner variant="success" label="Сіз бұл тарауды аяқтадыңыз." />
       )}
       {isLocked && (
         <Banner
           variant="warning"
-          label="You need to purchase this course to watch this chapter."
+          label="Осы тарауды көру үшін сізге осы курсты сатып алу қажет."
         />
       )}
       <div className="flex flex-col max-w-4xl mx-auto pb-20">
