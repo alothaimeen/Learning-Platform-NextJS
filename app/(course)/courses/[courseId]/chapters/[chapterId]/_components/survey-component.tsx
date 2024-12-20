@@ -11,7 +11,7 @@ const surveyJson1 = {
   timeLimitPerPage: 60,
   timeLimit: 180,
   firstPageIsStarted: true,
-  startSurveyText: "Start Quiz",
+  startSurveyText: "Тестті бастау",
   pages: [{
     elements: [{
       type: "html",
@@ -75,7 +75,7 @@ const surveyJson2 = {
   timeLimitPerPage: 60,
   timeLimit: 120,
   firstPageIsStarted: true,
-  startSurveyText: "Start Quiz",
+  startSurveyText: "Тестті бастау",
   pages: [{
     elements: [{
       type: "html",
