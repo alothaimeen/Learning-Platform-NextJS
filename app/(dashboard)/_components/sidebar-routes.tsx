@@ -57,16 +57,16 @@ export const SidebarRoutes = () => {
         <span>+7 (702) 673-98-69</span>
       </a>
       <div className="mt-6 space-y-2">
-        <span className="block text-sm font-medium text-muted hover:text-primary transition cursor-pointer">
+        <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
           Пользовательское соглашение
         </span>
-        <span className="block text-sm font-medium text-muted hover:text-primary transition cursor-pointer">
+        <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
           Полезные ссылки
         </span>
-        <span className="block text-sm font-medium text-muted hover:text-primary transition cursor-pointer">
+        <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
           Политика конфиденциальности
         </span>
-        <span className="block text-sm font-medium text-muted hover:text-primary transition cursor-pointer">
+        <span className="block text-sm font-medium text-black hover:text-gray-700 transition cursor-pointer">
           FAQ (Часто задаваемые вопросы)
         </span>
       </div>
