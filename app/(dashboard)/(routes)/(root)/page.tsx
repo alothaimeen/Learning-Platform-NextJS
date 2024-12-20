@@ -28,7 +28,7 @@ export default async function Dashboard() {
         />
         <InfoCard
           icon={CheckCircle}
-          label="Бітірілген"
+          label="Аяқталған"
           numberOfItems={completedCourses.length}
           variant="success"
         />

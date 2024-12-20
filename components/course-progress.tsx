@@ -32,7 +32,7 @@ export const CourseProgress = ({
           sizeByVariant[size || "default"]
         )}
       >
-        {Math.round(value)}% Бітірілген
+        {Math.round(value)}% Аяқталған
       </p>
     </div>
   );

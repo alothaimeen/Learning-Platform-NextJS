@@ -14,7 +14,7 @@ interface DisqusCommentsProps {
 const DisqusComments = ({ shortname, config }: DisqusCommentsProps) => {
   return (
     <div className="p-4">
-      <h3 className="text-xl font-semibold mb-4">Comments</h3>
+      <h3 className="text-xl font-semibold mb-4">Комменттер</h3>
       <DiscussionEmbed shortname={shortname} config={config} />
     </div>
   );
